@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $primeryKey = "s_id";
+    protected $primaryKey = 's_id';
 }

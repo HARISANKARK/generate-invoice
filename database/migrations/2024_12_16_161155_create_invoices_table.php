@@ -12,7 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->id();
+            $table->id('iv_id');
+            $table->integer('invoice_code');
+            $table->date('date');
+            $table->bigInteger('customer_id');
+            $table->text('address',255)->nullable();
+            $table->text('notes',255)->nullable();
+            $table->double('invoice_amount');
+            $table->double('discount_amount')->nullable();
+            $table->integer('enable_vat')->nullable();
+            $table->double('total_vat')->nullable();
+            $table->double('grand_total');
             $table->timestamps();
         });
     }

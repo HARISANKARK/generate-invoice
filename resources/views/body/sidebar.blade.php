@@ -10,7 +10,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('images/user-profile.jpg')}}" class="img-circle elevation-2" alt="User Image" />
+                <img src="#" class="img-circle elevation-2" alt="User Image" />
             </div>
             <div class="info">
             </div>
@@ -34,25 +34,25 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{url('/home')}}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-tachometer"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
-                </li>
-                <li class="nav-item {{ Request::is('customers*') ? 'menu-is-opening menu-open' : '' }}">
+                </li> --}}
+                <li class="nav-item {{ Request::is('invoice*') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-shipping-fast"></i>
                         <p>
-                            Customer
+                            Invoice
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('customers.create')}}" class="nav-link {{ Request::is('customers/create') ? 'active' : '' }}">
+                            <a href="{{route('invoice.create')}}" class="nav-link {{ Request::is('invoice/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add</p>
                             </a>
@@ -60,38 +60,77 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('customers.index')}}" class="nav-link {{ Request::is('customers') ? 'active' : '' }}">
+                            <a href="{{route('invoice.index')}}" class="nav-link {{ Request::is('invoice') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>View</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item {{ Request::is('services*') ? 'menu-is-opening menu-open' : '' }}">
+
+                <li class="nav-item {{ Request::is('customers*') || Request::is('services*')  ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-shipping-fast"></i>
+                        <i class="nav-icon fas fa-file-alt"></i>
                         <p>
-                            Services
+                            Manage
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('services.create')}}" class="nav-link {{ Request::is('services/create') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add</p>
+
+                        <li class="nav-item {{ Request::is('customers*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Customer
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('customers.create')}}" class="nav-link {{ Request::is('customers/create') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('customers.index')}}" class="nav-link {{ Request::is('customers') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('services.index')}}" class="nav-link {{ Request::is('services') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>View</p>
+                        <li class="nav-item {{ Request::is('services*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>
+                                    Services
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('services.create')}}" class="nav-link {{ Request::is('services/create') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('services.index')}}" class="nav-link {{ Request::is('services') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

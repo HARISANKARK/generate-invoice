@@ -11,4 +11,4 @@ Route::get('/', function () {
 
 Route::resource('customers',CustomerController::class);
 Route::resource('services',ServiceController::class);
-Route::resource('Invoice',InvoiceController::class);
+Route::resource('invoice',InvoiceController::class);
