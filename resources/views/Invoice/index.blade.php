@@ -68,7 +68,9 @@
                         @foreach($invoices as $invoice)
                           <tr class="odd">
                             <th scope="row">{{$i++}}</th>
-                            <td>{{$invoice->invoice_code}}</td>
+                            <td>
+                                <a href="{{route('invoice.show',$invoice->iv_id)}}" target="_blank">{{$invoice->invoice_code}}</a>
+                            </td>
                             <td>{{$invoice->date}}</td>
                             <td>{{$invoice->c_name}}</td>
                             <td>{{$invoice->address}}</td>
@@ -78,7 +80,7 @@
                             <td>{{$invoice->total_vat}}</td>
                             <td>{{$invoice->grand_total}}</td>
                             <td>
-                                <a href="{{route('invoice.show',$invoice->iv_id)}}" class="btn "><i class="fa fa-eye"></i></a>
+                                <a href="{{route('invoice.edit',$invoice->iv_id)}}" class="btn "><i class="fa fa-eye"></i></a>
                             </td>
                           </tr>
                         @endforeach

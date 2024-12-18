@@ -103,10 +103,7 @@ class InvoiceController extends Controller
             ->where('invoice_id',$id)
             ->get();
 
-        $customers = Customer::orderBy('c_name','asc')->get();
-        $services = Service::orderBy('s_name','asc')->get();
-
-        return view('invoice.show',compact('customers','services','invoice','invoice_services'));
+        return view('invoice.show',compact('invoice','invoice_services'));
     }
 
     /**
@@ -114,7 +111,17 @@ class InvoiceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $invoice = Invoice::join('customers','invoices.customer_id','=','customers.c_id')
+            ->find($id);
+        $invoice_services = InvoiceService::join('services','invoice_services.service_id','=','services.s_id')
+            ->where('invoice_id',$id)
+            ->get();
+
+        $customers = Customer::orderBy('c_name','asc')->get();
+        $services = Service::orderBy('s_name','asc')->get();
+
+        return view('invoice.edit',compact('customers','services','invoice','invoice_services'));
     }
 
     /**
