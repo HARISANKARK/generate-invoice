@@ -6,5 +6,5 @@ EXICUTING THE PROJECT STEPS
        username = "admin@gmail.com"
        password = "12345678")
 3. php artisan serve
-4. npm run dav
+4. npm run dev
 5. the comands are exicuted then the after login to redirect with invoice adding page
