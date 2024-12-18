@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Bill</title>
+    <title>Invoice</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -94,21 +94,9 @@
             border-top: 1px solid #e9ecef;
             padding-top: 10px;
         }
-        .btn {
-            display: inline-block;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
-<body id="body-section">
+<body>
     <div class="invoice">
         <div class="invoice-header">
             <h1>Invoice</h1>
@@ -117,12 +105,12 @@
 
         <div class="invoice-details">
             <div class="row">
-                <span><strong>Invoice Number:</strong> {{$invoice->invoice_code}}</span>
-                <span><strong>Date:</strong> {{$invoice->date}}</span>
+                <span><strong>Invoice Number:</strong> {{ $invoice->invoice_code }}</span>
+                <span><strong>Date:</strong> {{ $invoice->date }}</span>
             </div>
             <div class="row">
-                <span><strong>Customer Name:</strong> {{$invoice->c_name}}</span>
-                <span><strong>Address:</strong> {{$invoice->address}}</span>
+                <span><strong>Customer Name:</strong> {{ $invoice->c_name }}</span>
+                <span><strong>Address:</strong> {{ $invoice->address }}</span>
             </div>
         </div>
 
@@ -136,27 +124,26 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($invoice_services as $invoice_service)
+                @foreach($invoice_services as $service)
                 <tr>
-                    <td>{{$invoice_service->s_name}}</td>
-                    <td>{{$invoice_service->price}}</td>
-                    <td>{{$invoice_service->hour}}</td>
-                    <td>{{$invoice_service->total}}</td>
+                    <td>{{ $service->s_name }}</td>
+                    <td>{{ $service->price }}</td>
+                    <td>{{ $service->hour }}</td>
+                    <td>{{ $service->total }}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
 
         <div class="invoice-summary">
-            <p>Invoice Amount: <strong>{{$invoice->invoice_amount}}</strong></p>
-            <p>Invoice Discount: <strong>{{$invoice->invoice_discount}}</strong></p>
-            <p>Total Vat: <strong>{{$invoice->total_vat}}</strong></p>
-            <p class="total">Grand Total: {{$invoice->grand_total}}</p>
+            <p>Invoice Amount: <strong>{{ $invoice->invoice_amount }}</strong></p>
+            <p>Invoice Discount: <strong>{{ $invoice->invoice_discount }}</strong></p>
+            <p>Total VAT: <strong>{{ $invoice->total_vat }}</strong></p>
+            <p class="total">Grand Total: {{ $invoice->grand_total }}</p>
         </div>
 
         <div class="footer">
             <p>Thank you for choosing us! We appreciate your business.</p>
-            <a href="{{route('invoice.download',$invoice->iv_id)}}" class="btn">Download Invoice</a>
         </div>
     </div>
 </body>

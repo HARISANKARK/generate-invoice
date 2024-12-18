@@ -80,6 +80,7 @@
                             <td>{{$invoice->total_vat}}</td>
                             <td>{{$invoice->grand_total}}</td>
                             <td>
+                                <a href="{{route('invoice.download',$invoice->iv_id)}}" class="btn"><i class="fa fa-download"></i></a>
                                 <a href="{{route('invoice.edit',$invoice->iv_id)}}" class="btn "><i class="fa fa-eye"></i></a>
                             </td>
                           </tr>

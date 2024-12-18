@@ -7,6 +7,8 @@ use App\Models\Invoice;
 use App\Models\InvoiceService;
 use App\Models\Number;
 use App\Models\Service;
+use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -16,6 +18,20 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function downloadInvoice($invoiceId)
+    {
+        // Get the invoice and related services data
+        $invoice = Invoice::find($invoiceId);
+        $invoice_services = InvoiceService::where('invoice_id', $invoiceId)->get();
+
+        // Load the HTML view and pass the data
+        $pdf = FacadePdf::loadView('invoice-pdf', compact('invoice', 'invoice_services'));
+
+        // Download the PDF
+        return $pdf->download('invoice_' . $invoice->invoice_code . '.pdf');
+    }
+
     public function index(Request $request)
     {
         $filters = $request->only(['from','to','customer_id']);
